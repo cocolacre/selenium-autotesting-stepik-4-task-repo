@@ -1,4 +1,6 @@
+import math, os
 from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoAlertPresentException # в начале файла
 
 class BasePage():
     def __init__(self, browser, url, timeout=10):
@@ -16,4 +18,20 @@ class BasePage():
         except NoSuchElementException:
             return False
         return True
-        
+
+    def solve_quiz_and_get_code(self):
+        print("SOLVING ALERT START\n")
+        alert = self.browser.switch_to.alert
+        x = alert.text.split(" ")[2]
+        answer = str(math.log(abs((12 * math.sin(float(x))))))
+        alert.send_keys(answer)
+        alert.accept()
+        try:
+            alert = self.browser.switch_to.alert
+            alert_text = alert.text
+            print(f"Your code: {alert_text}")
+            alert.accept()
+            os.system("echo %s | clip"%alert_text)
+        except NoAlertPresentException:
+            print("No second alert presented")
+        print("SOLVING ALERT END\n")
