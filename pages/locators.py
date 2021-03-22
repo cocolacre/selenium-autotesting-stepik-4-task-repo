@@ -1,6 +1,5 @@
 from selenium.webdriver.common.by import By
 
-#.icon-ok-sign
 
 class BasePageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
@@ -24,6 +23,7 @@ class LoginPageLocators():
     REGISTER_PASSWORD_INPUT_1 = (By.ID, "id_registration-password1")
     REGISTER_PASSWORD_INPUT_2 = (By.ID, "id_registration-password2")
     REGISTER_BUTTON = (By.CSS_SELECTOR, "#register_form > button")
+    #.icon-ok-sign
     
 class ProductPageLocators():
     ADD_PRODUCT_TO_BASKET = (By.CSS_SELECTOR, ".btn-add-to-basket")
