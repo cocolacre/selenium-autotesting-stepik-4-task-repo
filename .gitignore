@@ -1,2 +1,6 @@
 __pycache__/
 selenium_venv/
+.pytest_cache/
+test_product_page_2.py
+test_product_page_4-3_8_negative.py
+test_product_page_parametrize_link.py
