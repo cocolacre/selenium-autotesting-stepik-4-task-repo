@@ -2,6 +2,7 @@ import pytest, time, os
 from pages.main_page import MainPage
 from pages.login_page import LoginPage
 from pages.product_page import ProductPage
+from pages.basket_page import BasketPage
 
 def test_guest_can_add_product_to_basket(browser):
     link = "http://selenium1py.pythonanywhere.com/ru/catalogue/the-shellcoders-handbook_209/?promo=newYear"
@@ -63,4 +64,21 @@ def test_guest_can_go_to_login_page_from_product_page(browser):
     page.go_to_login_page()
     page = LoginPage(browser, browser.current_url)
     page.should_be_login_page()
+
+def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
+    """
+    Гость открывает страницу товара
+    Переходит в корзину по кнопке в шапке 
+    Ожидаем, что в корзине нет товаров
+    Ожидаем, что есть текст о том что корзина пуста 
+    """
+    link = "http://selenium1py.pythonanywhere.com/ru/catalogue/the-shellcoders-handbook_209/"
+    page = ProductPage(browser, link)
+    page.open()
+    page.go_to_basket_page()
+    page = BasketPage(browser, browser.current_url)
+    page.should_be_basket_url()
+    page.should_not_be_checkout_button()
+    page.should_be_empty_basket_message()
+    page.should_not_be_basket_summary_element()
     

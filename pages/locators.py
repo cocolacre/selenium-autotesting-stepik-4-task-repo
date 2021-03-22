@@ -4,9 +4,16 @@ from selenium.webdriver.common.by import By
 class BasePageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
+    BASKET_LINK = (By.CSS_SELECTOR, 'a[href$="basket/"]')
     
 class MainPageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    
+class BasketPageLocators():
+    CHECKOUT_BUTTON = (By.CSS_SELECTOR, 'a[href$="checkout/"]')
+    EMPTY_BASKET_MESSAGE = (By.CSS_SELECTOR, "#content_inner > p")
+    EMPTY_BASKET_MESSAGE_EN = (By.CSS_SELECTOR, '#content_inner > p')
+    BASKET_SUMMARY = (By.CSS_SELECTOR, ".basket_summary")
     
 class LoginPageLocators():
     LOGIN_FORM = (By.CSS_SELECTOR, "#login_form")
